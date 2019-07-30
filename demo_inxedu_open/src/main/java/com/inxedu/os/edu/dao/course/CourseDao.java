@@ -117,4 +117,8 @@ public interface CourseDao {
 	 * @param courseId 课程id
      */
 	public void updateCourseCount(String type,int courseId);
+
+
+
+
 }

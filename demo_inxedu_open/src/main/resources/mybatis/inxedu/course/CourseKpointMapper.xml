@@ -125,4 +125,8 @@
 	where 
 		edu_course_kpoint.COURSE_ID=#{value} and edu_course_kpoint.KPOINT_TYPE=1
 	</select>
+	
+	<select id="queryurl" parameterType="Integer" resultType="String">
+		SELECT VIDEO_URL from edu_course_kpoint where KPOINT_ID=#{kpointId}
+	</select>
 </mapper>

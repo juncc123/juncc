@@ -7,7 +7,7 @@
 			<c:forEach items="${parentKpointList }" var="parentKpoint" varStatus="index">
 				<c:if test="${parentKpoint.kpointType==0 }"><!--   文件目录 -->
 					<li class="lh-menu-stair">
-						<a href="javascript: void(0)" title="${parentKpoint.name }"
+						<a href="${pageContext.request.contextPath}/kpoint/84" title="${parentKpoint.name }"
 						   <c:if test="${index.first==true}">class="current-1"</c:if>
 						><span class="fr"><em class="icon14 m-tree-icon">&nbsp;</em></span><em class="lh-menu-i-1 icon24 mr5"><font>${folderIndex }</font></em>${parentKpoint.name }</a>
 						<ol class="lh-menu-ol"

@@ -4,6 +4,7 @@ import com.inxedu.os.common.cache.EHCacheUtil;
 import com.inxedu.os.common.constants.CacheConstans;
 import com.inxedu.os.common.entity.PageEntity;
 import com.inxedu.os.edu.dao.course.CourseDao;
+import com.inxedu.os.edu.dao.course.CourseKpointDao;
 import com.inxedu.os.edu.entity.course.Course;
 import com.inxedu.os.edu.entity.course.CourseDto;
 import com.inxedu.os.edu.entity.course.QueryCourse;
@@ -25,6 +26,8 @@ public class CourseServiceImpl implements CourseService {
 
 	@Autowired
 	private CourseDao courseDao;
+
+	public CourseKpointDao courseKpointDao;
 
 	public int addCourse(Course course) {
 		return courseDao.addCourse(course);
@@ -122,5 +125,9 @@ public class CourseServiceImpl implements CourseService {
 	 */
 	public void updateCourseCount(String type,int courseId){
 		this.courseDao.updateCourseCount(type,courseId);
+	}
+
+	public String queryurl(int kpointId){
+		return courseKpointDao.queryurl(kpointId);
 	}
 }

@@ -122,4 +122,5 @@ public interface CourseService {
 	public void updateCourseCount(String type,int courseId);
 
 
+
 }

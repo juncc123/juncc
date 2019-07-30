@@ -105,5 +105,5 @@ public class CourseDaoImpl extends GenericDaoImpl implements CourseDao {
 		this.update("CourseMapper.updateCourseCount", map);
 	}
 	
-
 }
+

@@ -8,6 +8,7 @@ import com.inxedu.os.edu.constants.enums.WebSiteProfileType;
 import com.inxedu.os.edu.entity.kpoint.CourseKpoint;
 import com.inxedu.os.edu.entity.kpoint.CourseKpointDto;
 import com.inxedu.os.edu.service.course.CourseKpointService;
+import com.inxedu.os.edu.service.course.CourseService;
 import com.inxedu.os.edu.service.website.WebsiteProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.net.URLEncoder;
 import java.util.Date;
@@ -199,6 +201,7 @@ public class AdminKpointController extends BaseController {
 		}
     	return json;
     }
+
 
 
 }

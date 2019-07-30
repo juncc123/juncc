@@ -1,16 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ include file="/base.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
 <title>${course.courseName}详情</title>
-<script src="http://vod.baofengcloud.com/html/script/bfcloud.js?v=2"></script>
+<%--<script src="http://vod.baofengcloud.com/html/script/bfcloud.js?v=2"></script>--%>
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript">
 	var isok = ${isok};
 	var currentprice=${course.currentPrice};
+
+	$.ajax({
+		type:'GET',	//请求的类型,GET、POST等
+		url:"/kpoint/kpoint",	//向服务器请求的地址。
+		contentType:'application/json',	//向服务器发送内容的类型，默认值是：application/x-www-form-urlencoded
+		dataType:'JSON',	//预期服务器响应类型
+		async:true,	//默认值是true,表示请求是异步的，false是同步请求，同步请求会阻碍浏览器的其他操作（不建议使用）
+		timeout:'5000',	//设置本地的请求超时时间（单位是毫秒）
+		cache:true,	//设置浏览器是否缓存请求的页面
+		success:function(result,status,XMLHttpRequest){		//请求成功是执行的函数,result：服务器返回的数据，    status：服务器返回的状态，
+		},
+                error:function(xhr,status,error){	//请求失败是执行的函数
+				},
+                complete:function(xhr,status) {     //不管请求失败还是请求成功，都执行的函数
+				}
+	})
 </script>
+
+
+	<style type="text/css">
+		#exam_video{
+			/*display: none;*/
+		}
+
+	</style>
 </head>
 <body>
+
+<div id="playvideo_div" >
+	<div id="videoname"></div>
+	<%--<embed src="http://1258278462.vod2.myqcloud.com/196a9dcfvodcq1258278462/e8be4fb55285890789885114107/5pSanNCH5qgA.mp4" width="500" height="500">--%>
+
+	<video id="exam_video" class="video-js vjs-default-skin" controls preload="none" width="1000" height="600"
+		   poster="m.jpg">
+		<source src="${url}" type="video/mp4">
+        <a>cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc${url}</a>
+	</video>
+	<div id="videolist"></div>
+</div>
+
+
 	<div id="aCoursesList" class="bg-fa of">
 		<!-- /课程详情 开始 -->
 		<section class="container">
@@ -155,7 +195,7 @@
 													<c:forEach items="${parentKpointList }" var="parentKpoint" varStatus="index">
 														<c:if test="${parentKpoint.kpointType==0 }"><!-- 文件目录 -->
 															<li class="lh-menu-stair">
-																<a href="javascript: void(0)" title="${parentKpoint.name }" 
+																sssssssssssssssssssss<a href="/uc/play/${course.courseId}" title="${parentKpoint.name }"
 																	<c:if test="${index.first==true}">class="current-1"</c:if>
 																>
 																	<span class="fr"><em class="icon14 m-tree-icon">&nbsp;</em></span><em class="lh-menu-i-1 icon24 mr5"><font>${folderIndex }</font></em>${parentKpoint.name }</a>
@@ -164,7 +204,7 @@
 																	<c:if test="${index.first==false}">style="display: none;"</c:if>
 																>
 																	<c:forEach items="${parentKpoint.kpointList}" var="sonKpoint">
-																		<li class="lh-menu-second ml30"><a href="javascript:void(0)" <%-- onclick="playVideo('${sonKpoint.videoUrl }',this)" --%> onclick="getPlayerHtml(${sonKpoint.kpointId },${sonKpoint.free },this)" title="">
+																		<li class="lh-menu-second ml30"><a href="/uc/play/34" <%-- onclick="playVideo('${sonKpoint.videoUrl }',this)" --%> onclick="getPlayerHtml(${sonKpoint.kpointId },${sonKpoint.free },this)" title="">
 																				<span class="fr"> 
 																					<c:if test="${sonKpoint.free==1 }">
 																						<tt class="free-icon vam mr10">免费试听</tt>

@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="${ctx}/static/inxweb/css/web.css">
 <link href="${ctx}/static/inxweb/css/mw_320_768.css" rel="stylesheet" type="text/css" media="screen and (min-width: 320px) and (max-width: 768px)">
 <!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
-<script src="http://vod.baofengcloud.com/html/script/bfcloud.js?v=2"></script>
+<%--<script src="http://vod.baofengcloud.com/html/script/bfcloud.js?v=2"></script>--%>
 </head>
 <body>
 	<div class="of" style="background-color: #f0f0f0">
@@ -63,6 +63,10 @@
 							<p class="hLh20"><span style="color: #A6B8CC;">加载中...</span></p>
 						</section>
 					</div>
+					<video id="exam_video" class="video-js vjs-default-skin" controls preload="none" width="1000" height="600"
+						   poster="m.jpg">
+						<source src="" type="video/mp4">
+					</video>
 					<!-- /播放器位置 -->
 					<aside class="p-h-r-ele">
 						<section class="p-h-r-wrap">
@@ -100,7 +104,7 @@
 												<c:forEach items="${parentKpointList }" var="parentKpoint" varStatus="index">
 													<c:if test="${parentKpoint.kpointType==0 }"><!-- 文件目录 -->
 															<li class="lh-menu-stair">
-																<a href="javascript: void(0)" title="${parentKpoint.name }" 
+																<a href="${pageContext.request.contextPath}/kpoint/${sonKpoint.kpointId}" title="${parentKpoint.name }"
 																	<c:if test="${index.first==true}">class="current-1"</c:if>
 																><span class="fr"><em class="icon14 m-tree-icon">&nbsp;</em></span><em class="lh-menu-i-1 icon24 mr5"><font>${folderIndex }</font></em>${parentKpoint.name }</a>
 																<ol class="lh-menu-ol" 
@@ -109,7 +113,8 @@
 																>
 																	<c:forEach items="${parentKpoint.kpointList}" var="sonKpoint">
 																		<li class="lh-menu-second ml30">
-																			<a href="javascript:void(0)" onclick="getPlayerHtml(${sonKpoint.kpointId },'${sonKpoint.name }',this)" class="" title="">
+																			<a href="javascript:void(0)" class="" title="">5555
+<%--																				onclick="getPlayerHtml(${sonKpoint.kpointId },'${sonKpoint.name }',this)"--%>
 																				<span class="fr">
 																					<%-- <c:if test="${sonKpoint.free==1 }">
 																						<tt class="free-icon vam mr10">免费试听</tt>
@@ -129,7 +134,7 @@
 														<c:if test="${parentKpoint.kpointType==1 }"><!-- 视频 -->
 															<li class="lh-menu-stair">
 																<ul class="lh-menu-ol no-parent-node">
-																	<li class="lh-menu-second"><a title="" onclick="getPlayerHtml(${parentKpoint.kpointId },'${parentKpoint.name }',this)" href="javascript:void(0)">
+																	<li class="lh-menu-second">ssssssss<a title="" onclick="getPlayerHtml(${parentKpoint.kpointId },'${parentKpoint.name }',this)" href="javascript:void(0)">
 																			<span class="fr"> 
 																				<%-- <c:if test="${parentKpoint.free==1 }">
 																					<tt class="free-icon vam mr10">免费试听</tt>

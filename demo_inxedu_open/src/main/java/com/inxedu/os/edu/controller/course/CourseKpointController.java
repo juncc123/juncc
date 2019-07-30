@@ -10,16 +10,22 @@ import com.inxedu.os.edu.entity.kpoint.CourseKpoint;
 import com.inxedu.os.edu.service.course.CourseKpointService;
 import com.inxedu.os.edu.service.course.CourseService;
 import com.inxedu.os.edu.service.website.WebsiteProfileService;
+import org.omg.CORBA.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.Map;
 
@@ -151,4 +157,26 @@ public class CourseKpointController extends BaseController {
     public String callBack56Uploading(){
         return callBack56Uploading;
     }
+
+
+
+
+
+
+
+
+
+
+
+	@RequestMapping("/kpoint/{kpoint}")
+	public String queryurl(@PathVariable("kpoint") int kpoint,Model model){
+		System.out.println("ssssssssssssssssssssssss"+courseKpointService.queryurl(kpoint));
+		String url1 = courseKpointService.queryurl(kpoint);
+		model.addAttribute("url",url1);
+//		model.addAttribute(url);
+		return "inxedu/web/course/course-infor";
+//		D:\work\Gitwork\edu\demo_inxedu_open\src\main\webapp\WEB-INF\view\inxedu\web\course\course-infor.jsp
+//		return courseKpointService.queryurl(kpoint);
+	}
+
 }
